@@ -5,7 +5,7 @@
   "scripts": {
     "build": "next build --turbopack",
     "publish": "gh-pages -d out",
-    "deploy": "next build --turbopack && next export && gh-pages -d out",
+    "deploy": "next build --turbopack && gh-pages -d out",
     "dev": "next dev --turbopack",
     "start": "next start",
     "lint": "eslint"
