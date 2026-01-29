@@ -13,7 +13,7 @@ export default function WhatIDoSection() {
                         </p>
                         <div className="flex text-2xl w-3/7">
                             <p className="w-3/4 text-darkbeige">
-                                I specialize in building full-stack web applications that are fast, reliable, and user-friendly. With a solid foundation in both frontend and backend technologies, I help bring ideas to life whether it's for a business, startup, or product team.
+                                I specialize in building full-stack web applications that are fast, reliable, and user-friendly. With a solid foundation in both frontend and backend technologies, I help bring ideas to life whether it&apos;s for a business, startup, or product team.
                             </p>
                         </div>
                     </div>
