@@ -53,12 +53,16 @@ Uses `animate` prop directly, not `whileInView`.
 
 ### What I Do (`what-i-do.tsx`)
 
-Scroll-triggered with `whileInView`:
+Card-stacking scroll effect:
 
-1. Section heading (`HeaderText`) — `fadeUp`, no stagger
-2. Services intro paragraph — `fadeUp`, `delay: 0.1s`
-3. Each service block `(01)`, `(02)`, `(03)` — wrapped in `staggerContainer`; block number and content column are `fadeUp` children, staggered at 0.15s
-4. Skill rows within each block — stagger at 0.08s between rows
+1. Section heading (`HeaderText`) and intro paragraph — `fadeUp` on scroll, same as other sections.
+2. The three service blocks are displayed as **cards** in a stacking scroll layout:
+   - Each card is `position: sticky` with increasing `top` offsets (`top: 8rem`, `top: 10rem`, `top: 12rem`) so they stack visually as you scroll past them.
+   - Cards are styled with a background (dark surface, border), rounded corners, and padding — a visual upgrade from the current flat layout.
+   - As a new card scrolls in on top, the buried cards scale down slightly (`scale: 0.97` per level) using Framer Motion's `useScroll` + `useTransform` tied to each card's scroll progress, giving a subtle depth effect.
+   - Each card fades + slides up on initial entry (`fadeUp` via `whileInView`, `once: true`).
+3. The existing content inside each card (number, heading, description, skill rows) is unchanged — only the container layout and animation change.
+4. The current `min-h-screen` per block is removed; cards have a fixed comfortable height instead, letting the sticky stacking work correctly.
 
 ### What I Learned (`what-i-learned.tsx`)
 
@@ -78,7 +82,7 @@ Scroll-triggered + interaction upgrade:
 
 ### Hover Effects
 
-- Skill rows in What I Do: `whileHover={{ opacity: 1 }}` (rows are slightly dimmed at rest via `text-darkbeige`)
+- Cards in What I Do: `whileHover={{ y: -4 }}` subtle lift on the sticky card that's currently on top
 - Job entry headers in What I Did: `whileHover={{ x: 4 }}` micro-nudge, `transition: { duration: 0.15 }`
 
 ## What Is NOT Changing
