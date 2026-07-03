@@ -1,4 +1,4 @@
-# Goutham S — Portfolio
+# Goutham's Portfolio
 
 Personal portfolio, live at [goutham0110.github.io/portfolio](https://goutham0110.github.io/portfolio/).
 
