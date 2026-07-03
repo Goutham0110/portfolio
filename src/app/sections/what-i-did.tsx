@@ -61,7 +61,7 @@ const jobs = [
 ];
 
 export default function WhatIDidSection() {
-    const [expandedSections, setExpandedSections] = useState<Record<number, boolean>>({});
+    const [expandedSections, setExpandedSections] = useState<Record<number, boolean>>({ 1: true });
 
     const toggleSection = (sectionId: number) => {
         setExpandedSections(prev => ({
@@ -71,17 +71,11 @@ export default function WhatIDidSection() {
     };
 
     return (
-        <section id="what-i-did" className="min-h-screen flex flex-col py-16 px-6">
-            <motion.div
-                variants={fadeUp}
-                whileInView="visible"
-                viewport={{ once: true }}
-            >
-                <HeaderText title="What I Did" className="font-mono" />
-            </motion.div>
+        <section id="what-i-did" className="flex flex-col py-16 px-4 sm:px-6">
+            <HeaderText title="What I Did" className="font-mono" />
 
             <motion.div
-                className="flex flex-col px-6 mt-8"
+                className="flex flex-col px-1 sm:px-6 mt-8"
                 variants={staggerContainer}
                 initial="hidden"
                 whileInView="visible"
@@ -90,35 +84,38 @@ export default function WhatIDidSection() {
                 {jobs.map((job) => (
                     <motion.div
                         key={job.id}
-                        className="flex flex-col px-6"
+                        className="flex flex-col px-0 sm:px-6"
                         variants={fadeUp}
                     >
-                        <div className="flex gap-12 mx-8 mt-8 justify-between text-beige">
-                            <p className="flex text-5xl font-black w-auto">{job.number}</p>
-                            <div className="flex flex-col gap-12 text-xl w-5/9">
-                                <motion.div
-                                    className="cursor-pointer select-none"
+                        <div className="flex gap-4 sm:gap-12 mx-0 sm:mx-8 mt-8 justify-between text-beige">
+                            <p className="hidden sm:flex text-3xl lg:text-5xl font-black w-auto">{job.number}</p>
+                            <div className="flex flex-col gap-8 sm:gap-12 text-xl w-full sm:w-5/9">
+                                <motion.button
+                                    type="button"
+                                    aria-expanded={!!expandedSections[job.id]}
                                     onClick={() => toggleSection(job.id)}
+                                    className="cursor-pointer select-none text-left w-full rounded-lg"
                                     whileHover={{ x: 4 }}
                                     transition={{ duration: 0.15 }}
                                 >
-                                    <div className="flex items-center justify-between">
+                                    <div className="flex items-center justify-between gap-4">
                                         <div>
-                                            <h1 className="font-mono font-bold text-5xl">{job.title}</h1>
-                                            <p className="text-darkbeige text-2xl mt-4">{job.company}</p>
+                                            <h3 className="font-mono font-bold text-2xl sm:text-3xl lg:text-5xl">{job.title}</h3>
+                                            <p className="text-darkbeige text-lg sm:text-2xl mt-2 sm:mt-4">{job.company}</p>
                                         </div>
                                         <motion.svg
-                                            className="w-8 h-8"
+                                            className="w-6 h-6 sm:w-8 sm:h-8 shrink-0"
                                             fill="none"
                                             stroke="currentColor"
                                             viewBox="0 0 24 24"
+                                            aria-hidden="true"
                                             animate={{ rotate: expandedSections[job.id] ? 180 : 0 }}
                                             transition={{ rotate: { duration: 0.3 } }}
                                         >
                                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                                         </motion.svg>
                                     </div>
-                                </motion.div>
+                                </motion.button>
 
                                 <AnimatePresence initial={false}>
                                     {expandedSections[job.id] && (
@@ -132,13 +129,18 @@ export default function WhatIDidSection() {
                                             className="flex flex-col gap-4"
                                         >
                                             {job.points.map((point, i) => (
-                                                <div key={i}>
-                                                    <div className="flex gap-4 items-start">
-                                                        <p className="text-neutral-400 text-md mt-1">({String(i + 1).padStart(2, "0")})</p>
-                                                        <p className="w-3/4 text-lg text-darkbeige">{point}</p>
+                                                <motion.div
+                                                    key={i}
+                                                    initial={{ opacity: 0, y: 8 }}
+                                                    animate={{ opacity: 1, y: 0 }}
+                                                    transition={{ delay: 0.15 + i * 0.05, duration: 0.3, ease: "easeOut" }}
+                                                >
+                                                    <div className="flex gap-3 sm:gap-4 items-start">
+                                                        <p className="text-neutral-400 text-sm sm:text-md mt-1">({String(i + 1).padStart(2, "0")})</p>
+                                                        <p className="w-full md:w-3/4 text-base sm:text-lg text-darkbeige">{point}</p>
                                                     </div>
                                                     <Divider section={false} />
-                                                </div>
+                                                </motion.div>
                                             ))}
                                         </motion.div>
                                     )}

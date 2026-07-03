@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #080807;
+  --foreground: #d1d1c7;
   --beige: #D1D1C7;
   --darkbeige: #A29E9A;
 }
@@ -16,15 +16,58 @@
   --font-mono: var(--font-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #080807;
-    --foreground: #d1d1c7;
+html {
+  color-scheme: dark;
+  /* framer-motion useScroll measures targets against the scroll container
+     (documentElement) and requires it to be non-static. */
+  position: relative;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
   }
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans), system-ui, sans-serif;
+}
+
+section[id] {
+  scroll-margin-top: 4rem;
+}
+
+/* Height of one stacked service-card header strip in What I Do.
+   Must cover card padding-top + header row height at each breakpoint —
+   keep in sync with the ServiceCard padding (p-5/sm:p-8/md:p-10) and
+   header type scale (text-xl/sm:text-2xl/md:text-3xl/lg:text-4xl). */
+:root {
+  --card-peek: 5rem;
+}
+@media (min-width: 640px) {
+  :root {
+    --card-peek: 4.5rem;
+  }
+}
+@media (min-width: 768px) {
+  :root {
+    --card-peek: 5rem;
+  }
+}
+@media (min-width: 1024px) {
+  :root {
+    --card-peek: 5.25rem;
+  }
+}
+
+::selection {
+  background: var(--beige);
+  color: var(--background);
+}
+
+:focus-visible {
+  outline: 2px solid var(--beige);
+  outline-offset: 3px;
 }

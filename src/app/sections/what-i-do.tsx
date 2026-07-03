@@ -42,37 +42,37 @@ const services = [
 function ServiceCard({ service, index }: { service: typeof services[0]; index: number }) {
     const ref = useRef<HTMLDivElement>(null);
     const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end start"] });
-    const scale = useTransform(scrollYProgress, [0, 0.5, 1], [1, 1, 0.97 - index * 0.01]);
-
-    const topOffset = 8 + index * 2;
+    const scale = useTransform(scrollYProgress, [0, 0.5, 1], [1, 1, 0.985 - index * 0.005]);
 
     return (
         <motion.div
             ref={ref}
-            style={{ scale, top: `${topOffset}rem` }}
-            className="sticky bg-background border border-beige/20 rounded-2xl p-10 mb-6"
+            style={{ scale, transformOrigin: "top center", top: `calc(4rem + ${index} * var(--card-peek))` }}
+            className="sticky flex flex-col bg-[#111110] border border-beige/20 rounded-2xl p-5 sm:p-8 md:p-10 mb-6 shadow-[0_-12px_32px_rgba(0,0,0,0.5)]"
             variants={fadeUp}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-60px" }}
             whileHover={{ y: -4, transition: { duration: 0.2 } }}
         >
-            <div className="flex gap-12 justify-between text-beige">
-                <p className="flex text-5xl font-black w-auto">{service.number}</p>
-                <div className="flex flex-col gap-8 text-xl w-5/9">
-                    <h1 className="font-mono font-bold text-5xl">{service.title}</h1>
-                    <p className="w-3/4 text-darkbeige">{service.description}</p>
-                    <div className="flex flex-col gap-4">
-                        {service.skills.map((skill) => (
-                            <div key={skill.num}>
-                                <div className="flex gap-4 items-center">
-                                    <p className="text-neutral-400 text-md">{skill.num}</p>
-                                    <p className="w-3/4 text-3xl font-bold">{skill.label}</p>
-                                </div>
-                                <Divider section={false} />
+            {/* Header row — the strip that stays visible when cards stack.
+                Its height (+ card padding-top) must stay within --card-peek. */}
+            <div className="flex items-baseline gap-4 sm:gap-6 min-h-[3.75rem] sm:min-h-0 text-beige">
+                <p className="text-2xl sm:text-3xl lg:text-4xl font-black shrink-0">{service.number}</p>
+                <h3 className="font-mono font-bold text-xl sm:text-2xl md:text-3xl lg:text-4xl">{service.title}</h3>
+            </div>
+            <div className="flex flex-col gap-6 md:gap-8 mt-6 text-beige w-full md:w-5/9 md:self-end">
+                <p className="w-full lg:w-3/4 text-base sm:text-lg text-darkbeige">{service.description}</p>
+                <div className="flex flex-col gap-4">
+                    {service.skills.map((skill) => (
+                        <div key={skill.num}>
+                            <div className="flex gap-3 sm:gap-4 items-center">
+                                <p className="text-neutral-400 text-sm sm:text-md">{skill.num}</p>
+                                <p className="text-lg sm:text-2xl lg:text-3xl font-bold">{skill.label}</p>
                             </div>
-                        ))}
-                    </div>
+                            <Divider section={false} />
+                        </div>
+                    ))}
                 </div>
             </div>
         </motion.div>
@@ -81,16 +81,9 @@ function ServiceCard({ service, index }: { service: typeof services[0]; index: n
 
 export default function WhatIDoSection() {
     return (
-        <section id="what-i-do" className="flex flex-col py-16 px-6">
-            <div className="flex flex-col px-6">
-                <motion.div
-                    variants={fadeUp}
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true }}
-                >
-                    <HeaderText title="What I Do" className="font-mono" />
-                </motion.div>
+        <section id="what-i-do" className="flex flex-col py-16 px-4 sm:px-6">
+            <div className="flex flex-col px-1 sm:px-6">
+                <HeaderText title="What I Do" className="font-mono" />
                 <motion.div
                     className="flex justify-between"
                     variants={fadeUp}
@@ -98,10 +91,10 @@ export default function WhatIDoSection() {
                     whileInView="visible"
                     viewport={{ once: true }}
                 >
-                    <div className="flex gap-12 m-12 mt-18 justify-end text-beige">
-                        <p className="flex text-2xl w-auto text-beige">(services)</p>
-                        <div className="flex text-2xl w-3/7">
-                            <p className="w-3/4 text-darkbeige">
+                    <div className="flex flex-col sm:flex-row gap-4 sm:gap-12 m-2 sm:m-12 mt-8 sm:mt-18 sm:justify-end text-beige">
+                        <p className="flex text-xl sm:text-2xl w-auto text-beige">(services)</p>
+                        <div className="flex text-lg sm:text-2xl w-full sm:w-3/7">
+                            <p className="w-full lg:w-3/4 text-darkbeige">
                                 I specialize in building full-stack web applications that are fast, reliable, and user-friendly. With a solid foundation in both frontend and backend technologies, I help bring ideas to life whether it&apos;s for a business, startup, or product team.
                             </p>
                         </div>
@@ -111,10 +104,14 @@ export default function WhatIDoSection() {
 
             <Divider />
 
-            <div className="flex flex-col px-6 mt-8 pb-32">
+            <div className="flex flex-col px-1 sm:px-6 mt-8">
                 {services.map((service, index) => (
                     <ServiceCard key={service.number} service={service} index={index} />
                 ))}
+                {/* Sticky runway: padding doesn't extend the sticky containing block
+                    (content edge), so a real element is needed for the assembled
+                    stack to stay pinned before the section scrolls on. */}
+                <div className="h-96 sm:h-80" aria-hidden="true"></div>
             </div>
 
             <Divider />
