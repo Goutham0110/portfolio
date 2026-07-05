@@ -2,7 +2,7 @@
 
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
-**Goal:** Add subtle, refined Framer Motion animations to the portfolio — hero entrance on landing, scroll-triggered fade-ups on What I Learned and What I Did, and a sticky card-stacking scroll effect on What I Do.
+**Goal:** Add subtle, refined Framer Motion animations to the portfolio: hero entrance on landing, scroll-triggered fade-ups on What I Learned and What I Did, and a sticky card-stacking scroll effect on What I Do.
 
 **Architecture:** Install Framer Motion, create a shared `src/lib/animation-variants.ts` for reusable variants, then convert each section to `"use client"` and wire up animations. What I Do gets a sticky-stack card layout; What I Did gets `AnimatePresence` for smooth accordion expand/collapse.
 
@@ -41,7 +41,7 @@ Expected output: `added 1 package` (or similar), no errors.
 npm run dev
 ```
 
-Navigate to `http://localhost:3000/portfolio`. Page should load exactly as before — no visual changes yet.
+Navigate to `http://localhost:3000/portfolio`. Page should load exactly as before, no visual changes yet.
 
 - [ ] **Step 3: Commit**
 
@@ -185,7 +185,7 @@ git commit -m "feat: add hero entrance animation to landing section"
 
 ---
 
-## Task 4: What I Learned — staggered column fade-up
+## Task 4: What I Learned: staggered column fade-up
 
 **Files:**
 - Modify: `src/app/sections/what-i-learned.tsx`
@@ -322,7 +322,7 @@ git commit -m "feat: add staggered scroll animation to what-i-learned section"
 
 ---
 
-## Task 5: What I Did — scroll fade-up + AnimatePresence accordion
+## Task 5: What I Did: scroll fade-up + AnimatePresence accordion
 
 **Files:**
 - Modify: `src/app/sections/what-i-did.tsx`
@@ -489,7 +489,7 @@ export default function WhatIDidSection() {
 
 - [ ] **Step 2: Verify in browser**
 
-Scroll to "What I Did". The 4 job entries should fade up with a stagger. Click a job title — the content should expand/collapse smoothly without a height jump. The chevron should rotate 180° on expand.
+Scroll to "What I Did". The 4 job entries should fade up with a stagger. Click a job title, the content should expand/collapse smoothly without a height jump. The chevron should rotate 180° on expand.
 
 - [ ] **Step 3: Commit**
 
@@ -500,7 +500,7 @@ git commit -m "feat: add scroll animation and AnimatePresence accordion to what-
 
 ---
 
-## Task 6: What I Do — sticky card-stack layout
+## Task 6: What I Do: sticky card-stack layout
 
 **Files:**
 - Modify: `src/app/sections/what-i-do.tsx`
@@ -540,7 +540,7 @@ const services = [
     {
         number: "(03)",
         title: "UI/UX & Frontend",
-        description: "Design is more than looks — it's about clarity and connection. I design and develop clean, responsive interfaces that feel intuitive across devices. My focus is on clarity, accessibility, and seamless user experiences.",
+        description: "Design is more than looks, it's about clarity and connection. I design and develop clean, responsive interfaces that feel intuitive across devices. My focus is on clarity, accessibility, and seamless user experiences.",
         skills: [
             { num: "(01)", label: "NextJS | React | ReactNative" },
             { num: "(02)", label: "TailwindCSS | MaterialUI | Figma" },

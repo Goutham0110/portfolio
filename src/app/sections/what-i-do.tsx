@@ -30,7 +30,7 @@ const services = [
     {
         number: "(03)",
         title: "UI/UX & Frontend",
-        description: "Design is more than looks — it's about clarity and connection. I design and develop clean, responsive interfaces that feel intuitive across devices. My focus is on clarity, accessibility, and seamless user experiences.",
+        description: "Design is more than looks, it's about clarity and connection. I design and develop clean, responsive interfaces that feel intuitive across devices. My focus is on clarity, accessibility, and seamless user experiences.",
         skills: [
             { num: "(01)", label: "NextJS | React | ReactNative" },
             { num: "(02)", label: "TailwindCSS | MaterialUI | Figma" },
@@ -55,7 +55,7 @@ function ServiceCard({ service, index }: { service: typeof services[0]; index: n
             viewport={{ once: true, margin: "-60px" }}
             whileHover={{ y: -4, transition: { duration: 0.2 } }}
         >
-            {/* Header row — the strip that stays visible when cards stack.
+            {/* Header row: the strip that stays visible when cards stack.
                 Its height (+ card padding-top) must stay within --card-peek. */}
             <div className="flex items-baseline gap-4 sm:gap-6 min-h-[3.75rem] sm:min-h-0 text-beige">
                 <p className="text-2xl sm:text-3xl lg:text-4xl font-black shrink-0">{service.number}</p>

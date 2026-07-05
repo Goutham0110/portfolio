@@ -10,7 +10,7 @@ const projects = [
         number: "(01)",
         title: "Entity Resolution at Scale",
         context: "Production · Rapid Acceleration Partners",
-        description: "Distributed entity-matching system deduplicating 40M+ records in real time — Kafka pipelines, custom OpenSearch analyzers, and automated merge workflows hitting 98% match precision.",
+        description: "Distributed entity-matching system deduplicating 40M+ records in real time: Kafka pipelines, custom OpenSearch analyzers, and automated merge workflows hitting 98% match precision.",
         tags: ["Kafka", "OpenSearch", "MongoDB", "Node.js"],
         links: [],
     },
@@ -37,7 +37,7 @@ const projects = [
         number: "(04)",
         title: "Minesweeper",
         context: "Personal project",
-        description: "Classic Minesweeper clone built with React — uncover tiles, dodge mines, clear the board.",
+        description: "Classic Minesweeper clone built with React: uncover tiles, dodge mines, clear the board.",
         tags: ["React", "JavaScript"],
         links: [
             { label: "PLAY", href: "https://minesweeper-alo7.onrender.com/" },

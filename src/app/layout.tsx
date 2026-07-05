@@ -48,7 +48,7 @@ export const metadata: Metadata = {
     url: siteUrl,
     title: siteTitle,
     description: siteDescription,
-    siteName: "Goutham S — Portfolio",
+    siteName: "Goutham S Portfolio",
     images: [
       {
         url: `${siteUrl}/og-image.png`,

@@ -27,7 +27,7 @@ export default function Navbar() {
                     if (entry.isIntersecting) setActiveId(entry.target.id);
                 }
             },
-            // Narrow horizontal band around the viewport's upper middle —
+            // Narrow horizontal band around the viewport's upper middle;
             // the section crossing it is the "active" one.
             { rootMargin: "-40% 0px -55% 0px" }
         );
