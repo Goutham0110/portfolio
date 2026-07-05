@@ -47,6 +47,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     type: "website",
+    locale: "en_US",
     url: siteUrl,
     title: siteTitle,
     description: siteDescription,
@@ -67,10 +68,26 @@ export const metadata: Metadata = {
     images: [`${siteUrl}/og-image.png`],
   },
   robots: { index: true, follow: true },
+  // Paste the token from Google Search Console (Settings > Ownership verification
+  // > HTML tag) into the empty string below, then redeploy. Leaving it empty
+  // omits the tag entirely, so it is safe to ship as-is.
+  verification: {
+    google: "10du9kFaUorfUAUs6-TMsbdkAO2dbyepFeDdooJEACo",
+  },
 };
 
 export const viewport: Viewport = {
   themeColor: "#080807",
+};
+
+const websiteJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: siteTitle,
+  url: siteUrl,
+  description: siteDescription,
+  inLanguage: "en",
+  author: { "@type": "Person", name: "Goutham S", url: siteUrl },
 };
 
 const personJsonLd = {
@@ -109,6 +126,10 @@ export default function RootLayout({
       <body
         className={`${poppins.variable} ${montserrat.variable} antialiased`}
       >
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
+        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}

@@ -14,9 +14,9 @@ npm run lint      # Run ESLint
 
 ## Architecture
 
-This is a **Next.js 15 static portfolio site** exported to GitHub Pages, served from the domain root (`/`).
+This is a **Next.js 15 static portfolio site** exported to GitHub Pages, served from the `/portfolio` subpath (`https://goutham0110.github.io/portfolio`).
 
-**Key config** (`next.config.ts`): `output: "export"`, `images: { unoptimized: true }`, `trailingSlash: true`. These are required for GitHub Pages compatibility, do not remove them. The site is served from the domain root, so there is no `basePath`/`assetPrefix`; `src/lib/base-path.ts` (`withBasePath`) just normalizes raw string URLs to leading-slash form.
+**Key config** (`next.config.ts`): `output: "export"`, `basePath: "/portfolio"`, `images: { unoptimized: true }`, `trailingSlash: true`. These are required for GitHub Pages compatibility, do not remove them. Because the site lives under `/portfolio`, `src/lib/base-path.ts` (`withBasePath`) prefixes raw string URLs with the base path. All hardcoded SEO/canonical/OG URLs (layout, sitemap, robots, feed, article pages) must include the `/portfolio` prefix, keep them absolute against `https://goutham0110.github.io/portfolio`.
 
 **Page structure** (`src/app/page.tsx`): A single page composed of six sections in order: `Landing` (id `home`) → `WhatIDo` → `WhatILearned` → `WhatIDid` → `WhatIBuilt` → `Contact`. Section `id`s are unique anchor targets.
 

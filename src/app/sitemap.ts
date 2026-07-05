@@ -8,16 +8,21 @@ const siteUrl = "https://goutham0110.github.io/portfolio";
 export default function sitemap(): MetadataRoute.Sitemap {
   const articles = getAllArticles();
 
+  // Articles are sorted newest-first. Anchor the home and articles-list dates to
+  // the latest published article so `lastModified` only changes when content does
+  // (using `new Date()` would churn on every build and erode crawler trust).
+  const latestArticleDate = articles[0]?.date ? new Date(articles[0].date) : new Date();
+
   return [
     {
       url: `${siteUrl}/`,
-      lastModified: new Date(),
+      lastModified: latestArticleDate,
       changeFrequency: "monthly",
       priority: 1,
     },
     {
       url: `${siteUrl}/articles/`,
-      lastModified: new Date(),
+      lastModified: latestArticleDate,
       changeFrequency: "weekly",
       priority: 0.8,
     },

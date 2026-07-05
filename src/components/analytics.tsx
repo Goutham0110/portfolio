@@ -1,8 +1,11 @@
 // Privacy-friendly page-view analytics via GoatCounter (free for personal
-// sites, no cookies, GDPR-safe). To enable: create an account at
-// https://www.goatcounter.com, then set GOATCOUNTER_CODE to your site code
-// (the subdomain you picked, e.g. "goutham").
-const GOATCOUNTER_CODE = "";
+// sites, no cookies, GDPR-safe). To enable in three steps:
+//   1. Sign up at https://www.goatcounter.com and pick a site code (subdomain).
+//   2. In the GoatCounter site settings, add "goutham0110.github.io" as an
+//      allowed domain.
+//   3. Set GOATCOUNTER_CODE below to that site code (e.g. "goutham") and redeploy.
+// While empty, this component renders nothing, so it is safe to ship disabled.
+const GOATCOUNTER_CODE = "goutham0110";
 
 export default function Analytics() {
     if (!GOATCOUNTER_CODE) return null;
