@@ -14,17 +14,17 @@ npm run lint      # Run ESLint
 
 ## Architecture
 
-This is a **Next.js 15 static portfolio site** exported to GitHub Pages at `/portfolio`.
+This is a **Next.js 15 static portfolio site** exported to GitHub Pages, served from the domain root (`/`).
 
-**Key config** (`next.config.ts`): `output: "export"`, `basePath: "/portfolio"`, `assetPrefix: "/portfolio/"`, `images: { unoptimized: true }`, `trailingSlash: true`. These are required for GitHub Pages compatibility, do not remove them.
+**Key config** (`next.config.ts`): `output: "export"`, `images: { unoptimized: true }`, `trailingSlash: true`. These are required for GitHub Pages compatibility, do not remove them. The site is served from the domain root, so there is no `basePath`/`assetPrefix`; `src/lib/base-path.ts` (`withBasePath`) just normalizes raw string URLs to leading-slash form.
 
-**Page structure** (`src/app/page.tsx`): A single page composed of six sections in order: `Landing` (id `home`) → `WhatIDo` → `WhatILearned` → `WhatIDid` → `WhatIBuilt` → `Contact`. Section `id`s are anchor targets for the navbar; keep them unique.
+**Page structure** (`src/app/page.tsx`): A single page composed of six sections in order: `Landing` (id `home`) → `WhatIDo` → `WhatILearned` → `WhatIDid` → `WhatIBuilt` → `Contact`. Section `id`s are unique anchor targets.
 
-**Components** (`src/components/`): `HeaderText` (h2 section heading; the only h1 on the page is the hero name in `landing.tsx`), `Divider`, `Navbar` (fixed, appears after 400px scroll), `MotionProvider` (wraps the app in framer-motion `MotionConfig reducedMotion="user"`), `Analytics` (GoatCounter, disabled until `GOATCOUNTER_CODE` is set).
+**Components** (`src/components/`): `HeaderText` (h2 section heading; the only h1 on the home page is the hero name in `landing.tsx`), `Divider`, `MotionProvider` (wraps the app in framer-motion `MotionConfig reducedMotion="user"`), `Analytics` (GoatCounter, disabled until `GOATCOUNTER_CODE` is set). There is no navbar.
 
 **Section files** live in `src/app/sections/`. All are client components (`"use client"`) because they use framer-motion. Shared animation variants live in `src/lib/animation-variants.ts`.
 
-**SEO** (`src/app/layout.tsx`): full Metadata (Open Graph/Twitter/canonical, absolute URLs including the `/portfolio` basePath), JSON-LD Person schema, `sitemap.ts`/`robots.ts` metadata routes, `icon.svg` + `favicon.ico`, `public/og-image.png` (1200×630). Keep OG/canonical URLs absolute: `metadataBase` resolution drops the basePath for root-relative paths.
+**SEO** (`src/app/layout.tsx`): full Metadata (Open Graph/Twitter/canonical, absolute URLs), JSON-LD Person schema, `sitemap.ts`/`robots.ts` metadata routes, `icon.svg` + `favicon.ico`, `public/og-image.png` (1200×630). Keep OG/canonical URLs absolute (`siteUrl` is `https://goutham0110.github.io`).
 
 ## Styling
 
@@ -34,7 +34,7 @@ Uses **Tailwind CSS v4** with inline theme config in `src/app/globals.css`. The 
 
 ## Deployment
 
-Builds produce a static `out/` directory. `npm run publish` pushes it to the `gh-pages` branch via `gh-pages` CLI. The site is served from `goutham0110.github.io/portfolio`.
+Builds produce a static `out/` directory. `npm run publish` pushes it to the `gh-pages` branch via `gh-pages` CLI. The site is served from the domain root (`goutham0110.github.io`).
 
 ## Rules
 

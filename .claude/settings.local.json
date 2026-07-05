@@ -1,5 +1,6 @@
 {
   "permissions": {
+    "defaultMode": "bypassPermissions",
     "allow": [
       "Bash(find /c/Users/gouth/Documents/Others/portfolio/src -type f \\\\\\(-name *.tsx -o -name *.ts -o -name *.json \\\\\\) ! -path */.next/*)",
       "Bash(find /c/Users/gouth/Documents/Others/portfolio/app -type f \\\\\\(-name *.tsx -o -name *.ts -o -name *.json \\\\\\) ! -path */.next/*)",
@@ -32,7 +33,9 @@
       "Bash(taskkill //F //IM node.exe //FI \"WINDOWTITLE eq npm*\")",
       "PowerShell(npx tsc --noEmit)",
       "Bash(curl *)",
-      "mcp__chrome-devtools__list_pages"
+      "mcp__chrome-devtools__list_pages",
+      "WebFetch(domain:www.linkedin.com)",
+      "Skill(update-config)"
     ]
   },
   "enabledPlugins": {

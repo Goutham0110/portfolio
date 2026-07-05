@@ -2,7 +2,6 @@ import type { Metadata, Viewport } from "next";
 import { Poppins, Montserrat } from "next/font/google";
 import "./globals.css";
 import MotionProvider from "@/components/motion-provider";
-import Navbar from "@/components/navbar";
 import Analytics from "@/components/analytics";
 
 const poppins = Poppins({
@@ -19,7 +18,7 @@ const montserrat = Montserrat({
   display: "swap",
 });
 
-const siteUrl = "https://goutham0110.github.io/portfolio";
+const siteUrl = "https://goutham0110.github.io";
 const siteTitle = "Goutham's Portfolio";
 const siteDescription =
   "Full-stack engineer building distributed systems, data pipelines, and polished web apps with React, Next.js, Node.js, Python, and AWS.";
@@ -42,7 +41,10 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "Goutham S", url: siteUrl }],
   creator: "Goutham S",
-  alternates: { canonical: siteUrl },
+  alternates: {
+    canonical: siteUrl,
+    types: { "application/rss+xml": `${siteUrl}/feed.xml` },
+  },
   openGraph: {
     type: "website",
     url: siteUrl,
@@ -112,7 +114,6 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
         />
         <MotionProvider>
-          <Navbar />
           {children}
         </MotionProvider>
         <Analytics />

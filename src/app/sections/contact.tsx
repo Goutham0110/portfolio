@@ -1,14 +1,15 @@
 "use client";
 
+import Link from "next/link";
 import { motion } from "framer-motion";
 import { fadeUp, staggerContainer } from "@/lib/animation-variants";
 import Divider from "@/components/divider";
 import HeaderText from "@/components/header-text";
 
 const socials = [
-    { label: "GITHUB", href: "https://github.com/Goutham0110" },
-    { label: "LINKEDIN", href: "https://www.linkedin.com/in/goutham0110/" },
-    { label: "ARTICLES", href: "https://www.linkedin.com/in/goutham0110/recent-activity/articles/" },
+    { label: "GITHUB", href: "https://github.com/Goutham0110", internal: false },
+    { label: "LINKEDIN", href: "https://www.linkedin.com/in/goutham0110/", internal: false },
+    { label: "ARTICLES", href: "/articles", internal: true },
 ];
 
 export default function ContactSection() {
@@ -39,18 +40,28 @@ export default function ContactSection() {
                         <span className="relative transition-all duration-300 group-hover:text-background group-hover:translate-x-0.5 group-hover:-translate-y-0.5" aria-hidden="true">↗</span>
                     </a>
                 </motion.div>
-                <motion.div variants={fadeUp} className="flex flex-wrap gap-x-8 gap-y-2 mt-4">
-                    {socials.map((social) => (
-                        <a
-                            key={social.label}
-                            href={social.href}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="font-mono text-sm tracking-widest text-darkbeige transition-colors hover:text-beige"
-                        >
-                            {social.label} ↗
-                        </a>
-                    ))}
+                <motion.div variants={fadeUp} className="flex flex-wrap gap-2 sm:gap-3 mt-4">
+                    {socials.map((social) => {
+                        const className =
+                            "group flex items-center gap-2 sm:gap-4 rounded-full border border-beige/30 px-4 py-1.5 sm:px-8 sm:py-2 transition-colors hover:bg-beige hover:text-background";
+                        const inner = (
+                            <>
+                                <span className="font-mono text-sm sm:text-xl">{social.label}</span>
+                                <span className="text-xl sm:text-3xl font-black transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" aria-hidden="true">
+                                    ↗
+                                </span>
+                            </>
+                        );
+                        return social.internal ? (
+                            <Link key={social.label} href={social.href} className={className}>
+                                {inner}
+                            </Link>
+                        ) : (
+                            <a key={social.label} href={social.href} target="_blank" rel="noopener noreferrer" className={className}>
+                                {inner}
+                            </a>
+                        );
+                    })}
                 </motion.div>
             </motion.div>
 
