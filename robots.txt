@@ -1,4 +1,4 @@
 User-Agent: *
 Allow: /
 
-Sitemap: https://goutham0110.github.io/sitemap.xml
+Sitemap: https://goutham0110.github.io/portfolio/sitemap.xml

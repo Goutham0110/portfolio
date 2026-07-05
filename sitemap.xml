@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
-<loc>https://goutham0110.github.io/</loc>
-<lastmod>2026-07-05T19:11:10.599Z</lastmod>
+<loc>https://goutham0110.github.io/portfolio/</loc>
+<lastmod>2026-07-05T19:21:35.876Z</lastmod>
 <changefreq>monthly</changefreq>
 <priority>1</priority>
 </url>
 <url>
-<loc>https://goutham0110.github.io/articles/</loc>
-<lastmod>2026-07-05T19:11:10.599Z</lastmod>
+<loc>https://goutham0110.github.io/portfolio/articles/</loc>
+<lastmod>2026-07-05T19:21:35.876Z</lastmod>
 <changefreq>weekly</changefreq>
 <priority>0.8</priority>
 </url>
 <url>
-<loc>https://goutham0110.github.io/articles/partitioned-tables-in-mysql/</loc>
+<loc>https://goutham0110.github.io/portfolio/articles/partitioned-tables-in-mysql/</loc>
 <lastmod>2025-08-23T00:00:00.000Z</lastmod>
 <changefreq>yearly</changefreq>
 <priority>0.6</priority>
