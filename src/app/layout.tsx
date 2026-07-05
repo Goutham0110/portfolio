@@ -18,7 +18,7 @@ const montserrat = Montserrat({
   display: "swap",
 });
 
-const siteUrl = "https://goutham0110.github.io";
+const siteUrl = "https://goutham0110.github.io/portfolio";
 const siteTitle = "Goutham's Portfolio";
 const siteDescription =
   "Full-stack engineer building distributed systems, data pipelines, and polished web apps with React, Next.js, Node.js, Python, and AWS.";

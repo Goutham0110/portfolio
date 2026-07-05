@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { getAllArticles, getAllCategories } from "@/lib/articles";
 import ArticlesBrowser from "./articles-browser";
 
-const siteUrl = "https://goutham0110.github.io";
+const siteUrl = "https://goutham0110.github.io/portfolio";
 const pageTitle = "Articles | Goutham's Portfolio";
 const pageDescription =
     "Writing on distributed systems, databases, and building for the web. Browse and search articles by Goutham S.";

@@ -3,7 +3,7 @@ import { getAllArticles } from "@/lib/articles";
 
 export const dynamic = "force-static";
 
-const siteUrl = "https://goutham0110.github.io";
+const siteUrl = "https://goutham0110.github.io/portfolio";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const articles = getAllArticles();

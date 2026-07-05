@@ -3,7 +3,7 @@ import { getAllArticles } from "@/lib/articles";
 // Rendered once at build time and exported as a static feed.xml file.
 export const dynamic = "force-static";
 
-const siteUrl = "https://goutham0110.github.io";
+const siteUrl = "https://goutham0110.github.io/portfolio";
 
 function escapeXml(value: string): string {
     return value

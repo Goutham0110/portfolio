@@ -1,8 +1,9 @@
-// The site is served from the domain root, so there is no basePath to prepend.
-// This helper is kept so raw string URLs (e.g. an <img src> built from markdown
-// frontmatter) are still normalized to a leading-slash, root-relative form.
+// The site is served from a sub-path ("/portfolio"), so this must match the
+// basePath in next.config.ts. Next prefixes next/link and Next-managed assets
+// automatically, but raw string URLs (e.g. an <img src> built from markdown
+// frontmatter) are not touched, so this helper prepends the base path to them.
 
-export const BASE_PATH = "";
+export const BASE_PATH = "/portfolio";
 
 /**
  * Normalize a root-relative path. Absolute URLs (http/https) and data URIs are

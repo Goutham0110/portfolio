@@ -9,7 +9,7 @@ import ReadingProgress from "@/components/reading-progress";
 import SiteHeader from "@/components/site-header";
 import TableOfContents from "@/components/table-of-contents";
 
-const siteUrl = "https://goutham0110.github.io";
+const siteUrl = "https://goutham0110.github.io/portfolio";
 
 export function generateStaticParams() {
     return getAllSlugs().map((slug) => ({ slug }));
@@ -152,6 +152,8 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
                             {meta.description}
                         </p>
 
+                        <ArticleAuthor />
+
                         {/* Fixed aspect ratio reserves the space before the image loads (no CLS). */}
                         <div className="anim-fade-up anim-delay-3 relative mt-3 aspect-[1200/628] overflow-hidden rounded-2xl border border-beige/12 bg-beige/[0.04]">
                             {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -175,46 +177,17 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
                     </div>
 
                     <footer className="mt-14 flex flex-col gap-10 border-t border-beige/15 pt-10">
-                        <div className="flex flex-col gap-6">
-                            {meta.keywords.length > 0 && (
-                                <div className="flex flex-wrap gap-2">
-                                    {meta.keywords.map((keyword) => (
-                                        <span
-                                            key={keyword}
-                                            className="rounded-full border border-beige/20 px-3 py-1 font-mono text-[10px] sm:text-xs tracking-widest uppercase text-darkbeige"
-                                        >
-                                            {keyword}
-                                        </span>
-                                    ))}
-                                </div>
-                            )}
+                        <div className="flex justify-end pt-2">
+                            <Link
+                                href="/articles"
+                                className="group inline-flex items-center gap-2 rounded-xl px-6 py-3 font-mono text-xs sm:text-sm tracking-widest uppercase text-beige transition-colors duration-200"
+                            >
+                                View all articles
+                                <span aria-hidden className="transition-transform duration-200 group-hover:translate-x-1">
+                                    →
+                                </span>
+                            </Link>
                         </div>
-
-                        <ArticleAuthor />
-
-                        {(older || newer) && (
-                            <nav aria-label="More articles" className="flex flex-col gap-4 sm:flex-row">
-                                {older && (
-                                    <Link href={`/articles/${older.slug}`} className={neighborCardClass}>
-                                        <p className="font-mono text-[10px] tracking-widest text-neutral-400">
-                                            ← OLDER
-                                        </p>
-                                        <p className="font-mono font-bold leading-snug text-beige">{older.title}</p>
-                                    </Link>
-                                )}
-                                {newer && (
-                                    <Link
-                                        href={`/articles/${newer.slug}`}
-                                        className={`${neighborCardClass} sm:text-right sm:items-end`}
-                                    >
-                                        <p className="font-mono text-[10px] tracking-widest text-neutral-400">
-                                            NEWER →
-                                        </p>
-                                        <p className="font-mono font-bold leading-snug text-beige">{newer.title}</p>
-                                    </Link>
-                                )}
-                            </nav>
-                        )}
                     </footer>
                 </article>
 
