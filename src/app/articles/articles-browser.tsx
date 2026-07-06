@@ -164,7 +164,7 @@ export default function ArticlesBrowser({
 
             {/* Results */}
             {filtered.length > 0 ? (
-                <motion.div layout className="flex flex-col gap-5">
+                <motion.div layout className="flex flex-col gap-6">
                     <AnimatePresence mode="popLayout">
                         {filtered.map((article, index) => (
                             <ArticleCard

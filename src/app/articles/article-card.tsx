@@ -37,7 +37,7 @@ export default function ArticleCard({
                 ease: easeOutSoft,
                 delay: Math.min(index * 0.07, 0.35),
             }}
-            className="group relative flex flex-col sm:flex-row sm:items-stretch gap-5 sm:gap-8 rounded-lg border border-beige/15 bg-beige/[0.03] p-4 sm:p-5 text-beige transition-colors duration-200 hover:border-beige/40 hover:bg-beige/[0.06] focus-within:border-beige/50"
+            className="group relative flex flex-col sm:flex-row sm:items-stretch gap-5 sm:gap-12 rounded-lg border border-beige/10 bg-beige/[0.03] p-7 sm:p-7 text-beige transition-colors duration-200 hover:border-beige/20 hover:bg-beige/[0.06] focus-within:border-beige/50"
         >
             {/* Cover image, on the left (stacks on top on mobile). Cover
                 images are always 1280x720 (16:9), so the container keeps that
