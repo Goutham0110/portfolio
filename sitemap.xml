@@ -2,21 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
 <loc>https://goutham0110.github.io/portfolio/</loc>
-<lastmod>2026-07-06T00:00:00.000Z</lastmod>
+<lastmod>2025-08-23T00:00:00.000Z</lastmod>
 <changefreq>monthly</changefreq>
 <priority>1</priority>
 </url>
 <url>
 <loc>https://goutham0110.github.io/portfolio/articles/</loc>
-<lastmod>2026-07-06T00:00:00.000Z</lastmod>
+<lastmod>2025-08-23T00:00:00.000Z</lastmod>
 <changefreq>weekly</changefreq>
 <priority>0.8</priority>
-</url>
-<url>
-<loc>https://goutham0110.github.io/portfolio/articles/what-is-an-mcp/</loc>
-<lastmod>2026-07-06T00:00:00.000Z</lastmod>
-<changefreq>yearly</changefreq>
-<priority>0.6</priority>
 </url>
 <url>
 <loc>https://goutham0110.github.io/portfolio/articles/partitioned-tables-in-mysql/</loc>
