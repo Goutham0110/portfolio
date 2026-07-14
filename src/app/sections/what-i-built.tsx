@@ -8,22 +8,16 @@ import HeaderText from "@/components/header-text";
 const projects = [
     {
         number: "(01)",
-        title: "Entity Resolution at Scale",
-        context: "Production · Rapid Acceleration Partners",
-        description: "Distributed entity-matching system deduplicating 40M+ records in real time: Kafka pipelines, custom OpenSearch analyzers, and automated merge workflows hitting 98% match precision.",
-        tags: ["Kafka", "OpenSearch", "MongoDB", "Node.js"],
-        links: [],
+        title: "Ball Tracking with YOLOv5",
+        context: "Robocon 2022 · Team project",
+        description: "Automatic ball-tracking bot with aim-and-shoot capability, running on a Raspberry Pi. It detects the white ball in frame and aligns itself to keep the target in shooting range. Built and integrated into the robot we demonstrated at Robocon 2022.",
+        tags: ["YOLOv5", "PyTorch", "Raspberry Pi", "Computer Vision"],
+        links: [
+            { label: "ARTICLE", href: "https://medium.com/@gouthamsaravananr/object-detection-using-yolov5-52d949f7654a" },
+        ],
     },
     {
         number: "(02)",
-        title: "4K Video Transcoding Pipeline",
-        context: "Production · VisAI Labs",
-        description: "High-throughput distributed transcoding pipeline for 4K video built on FFmpeg and BullMQ, fanned out across AWS ECS tasks with robust fault tolerance.",
-        tags: ["FFmpeg", "BullMQ", "Redis", "AWS ECS"],
-        links: [],
-    },
-    {
-        number: "(03)",
         title: "Semantic Find",
         context: "Personal project",
         description: "Semantic search engine with a Next.js/TypeScript web client backed by a Python inference server.",
@@ -32,6 +26,14 @@ const projects = [
             { label: "WEB", href: "https://github.com/Goutham0110/semantic-find-web" },
             { label: "SERVER", href: "https://github.com/Goutham0110/semantic-find-server" },
         ],
+    },
+    {
+        number: "(03)",
+        title: "Dent and Scratch Detection",
+        context: "IIT Madras Student's Hackathon 2022 · Team project",
+        description: "Object detection model built on YOLOv7 that detects and classifies dents and cracks in images of cars, returning the count of dents and scratches along with their sizes.",
+        tags: ["YOLOv7", "PyTorch", "Object Detection", "Computer Vision"],
+        links: [],
     },
     {
         number: "(04)",
